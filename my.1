@@ -1,0 +1,113 @@
+MY(1)                           User Commands                          MY(1)
+
+NAME
+       my - coleção pessoal de comandos úteis
+
+SYNOPSIS
+       Comandos diversos organizados por categoria
+
+DESCRIPTION
+       Esta página contém os comandos mais utilizados pelo usuário, organiza-
+       dos por categoria.
+
+SECTION UV (PYTHON VIRTUAL ENVIRONMENT)
+       uv venv
+              Criar ambiente virtual Python
+
+       source .venv/bin/activate
+              Ativar ambiente virtual (Linux/Mac)
+
+       uv pip install .
+              Instalação normal do projeto
+
+       uv pip install -e .
+              Modo desenvolvimento (editable)
+
+       uv pip freeze > requirements.txt
+              Gerar arquivo de dependências
+
+       uv pip install -r requirements.txt
+              Instalar dependências do arquivo
+
+SECTION FASTAPI
+       uvicorn src.api.main:app --reload
+              Rodar aplicação FastAPI com auto-reload
+
+SECTION STREAMLIT
+       streamlit run src.ui.app.py
+              Iniciar aplicação Streamlit
+
+SECTION DOCKER
+       docker exec -it nome-conteiner bash
+              Acessar container em execução
+
+       docker-compose up -d
+              Iniciar containers em background
+
+       docker-compose down -v
+              Parar e remover containers e volumes
+
+SECTION POSTGRESQL
+       psql -h localhost -U name-user -d name-db
+              Conectar ao banco PostgreSQL
+
+       Comandos internos psql:
+              \\l    Listar bancos de dados
+              \\dt   Listar tabelas do banco atual
+              \\c    dbname Conectar a outro banco
+              \\q    Sair do psql
+              
+              "\\d nome_tabela"  Listar colunas de uma tabela
+        
+        SQL Puro:
+              # Listar bancos de dados:
+                SELECT datname FROM pg_database; 
+              
+              # Para listar apenas as tabelas no schema público:
+                SELECT table_name               
+                FROM information_schema.tables 
+                WHERE table_schema = 'public';
+
+              # Listar Colunas de uma Tabela:
+                SELECT column_name
+                FROM information_schema.columns
+                WHERE table_name = 'nome_da_tabela';
+              
+              # Selecionando todas as colunas:
+                SELECT * FROM nome_da_tabela;
+
+              # Inserindo dados em todas as colunas:
+                INSERT INTO nome_da_tabela (coluna1, coluna2)
+                VALUES (valor1, valor2, ...);
+
+SECTION GIT
+       git status
+              Verificar estado do repositório
+
+       git add .
+              Adicionar todas as alterações
+
+       git commit -m "mensagem"
+              Comitar alterações
+
+       git push origin branch
+              Enviar commits para o repositório remoto
+
+       git pull origin branch
+              Atualizar repositório local
+
+SECTION SISTEMA
+       ls -la
+              Listar arquivos (incluindo ocultos)
+
+       pwd    Mostrar diretório atual
+
+       cd     ~/pasta
+              Navegar para diretório
+
+SEE ALSO
+       man(1), bash(1), git(1), docker(1), psql(1)
+
+MY 1.0                          August 2024                           MY(1)
+.\" Instalando:
+.\" sudo gzip -c my.1 > /usr/share/man/man1/my.1.gz
