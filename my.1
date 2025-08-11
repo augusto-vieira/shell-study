@@ -81,21 +81,42 @@ SECTION POSTGRESQL
                 VALUES (valor1, valor2, ...);
 
 SECTION GIT
-       git status
-              Verificar estado do repositório
-
-       git add .
-              Adicionar todas as alterações
-
        git commit -m "mensagem"
               Comitar alterações
 
-       git push origin branch
+       git checkout -b branch-python
+              Criar um branch
+              
+       git push origin branch-python
               Enviar commits para o repositório remoto
 
        git pull origin branch
               Atualizar repositório local
+       
+       # Marcar versões específicas
+       git tag projeto-1-v1
+       git push origin projeto-1-v1
 
+       # Como usar sparse-checkout: 
+       git clone --filter=blob:none --no-checkout <URL_DO_REPOSITORIO>
+       cd <NOME_DO_REPOSITORIO>
+       git sparse-checkout init --cone 
+       git sparse-checkout set projects/points-of-interest/
+       git checkout main  # Ou seu branch principal
+       
+       # Se já tiver o repositório clonado:
+       git config core.sparseCheckout true
+      
+       echo "/Python/" >> .git/info/sparse-checkout
+       echo "diretorio1/*" >> .git/info/sparse-checkout
+       echo "diretorio2/arquivo.txt" >> .git/info/sparse-checkout
+       
+       git checkout main
+
+       # Se precisar voltar a ver todas as pastas
+       git sparse-checkout disable  # Basta desativar o sparse-checkout:
+       git reset --hard
+       
 SECTION SISTEMA
        ls -la
               Listar arquivos (incluindo ocultos)
