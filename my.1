@@ -93,29 +93,30 @@ SECTION GIT
        git pull origin branch
               Atualizar repositório local
        
-       # Marcar versões específicas
        git tag projeto-1-v1
        git push origin projeto-1-v1
+              Marcar versões específicas
 
-       # Como usar sparse-checkout: 
-       git clone --filter=blob:none --no-checkout <URL_DO_REPOSITORIO>
-       cd <NOME_DO_REPOSITORIO>
-       git sparse-checkout init --cone 
-       git sparse-checkout set projects/points-of-interest/
-       git checkout main  # Ou seu branch principal
+       # Como usar sparse-checkout:
+.nf
+              git clone --filter=blob:none --no-checkout <URL_DO_REPOSITORIO>
+              cd <NOME_DO_REPOSITORIO>
+              git sparse-checkout init --cone 
+              git sparse-checkout set projects/points-of-interest/
+              git checkout main  # Ou seu branch principal
        
-       # Se já tiver o repositório clonado:
-       git config core.sparseCheckout true
-      
-       echo "/Python/" >> .git/info/sparse-checkout
-       echo "diretorio1/*" >> .git/info/sparse-checkout
-       echo "diretorio2/arquivo.txt" >> .git/info/sparse-checkout
+              # Se já tiver o repositório clonado:
+              git config core.sparseCheckout true
+             
+              echo "/Python/" >> .git/info/sparse-checkout
+              echo "diretorio1/*" >> .git/info/sparse-checkout
+              echo "diretorio2/arquivo.txt" >> .git/info/sparse-checkout
        
-       git checkout main
+              git checkout main
 
-       # Se precisar voltar a ver todas as pastas
-       git sparse-checkout disable  # Basta desativar o sparse-checkout:
-       git reset --hard
+              # Se precisar voltar a ver todas as pastas
+              git sparse-checkout disable  # Basta desativar o sparse-checkout
+              git reset --hard
        
 SECTION SISTEMA
        ls -la
