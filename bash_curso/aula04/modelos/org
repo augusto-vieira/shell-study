@@ -1,0 +1,23 @@
+
+---
+
+### 5. `template.org` (Org-mode)
+
+```org
+#+TITLE: Nome do Projeto
+#+AUTHOR: Seu Nome
+#+DATE: <2025-09-02>
+#+OPTIONS: toc:nil
+
+* Introdução
+  Pequena introdução sobre o projeto.
+
+* Tarefas
+** TODO Implementar funcionalidade X
+** TODO Testar módulo Y
+** DONE Esboçar o modelo inicial
+
+* Código
+#+BEGIN_SRC bash
+echo "Hello from org-mode"
+#+END_SRC

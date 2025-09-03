@@ -1,0 +1,7 @@
+DEFAULT='vim'
+
+editor[asm]=$DEFAULT
+editor[bash]=$DEFAULT
+editor[c]=code
+editor[md]=code
+editor[txt]=nano

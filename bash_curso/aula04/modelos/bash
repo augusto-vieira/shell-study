@@ -1,0 +1,19 @@
+#!/usr/bin/
+# File: template.bash
+# Description: Bash script template
+# Author: [Seu Nome]
+# Date: YYYY-MM-DD
+
+# Config ------------------------------------------
+
+    #Bloco com a declaração das variáveis.
+
+# Functions ------------------------------------------
+
+    #Bloco com a declaração das funções.
+
+# Parse options ------------------------------------------
+
+    #Bloco para pegar as opções -h
+
+# Main ------------------------------------------

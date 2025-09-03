@@ -1,0 +1,12 @@
+; Filename: template.asm
+; Description: Basic NASM x86 Assembly Template
+; Author: [Seu Nome]
+; Date: YYYY-MM-DD
+
+section .data
+
+section .text
+    global _start
+
+_start:
+

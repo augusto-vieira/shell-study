@@ -1,0 +1,7 @@
+#!/bin/sh
+# File: template.sh
+# Description: POSIX shell script template
+# Author: [Seu Nome]
+# Date: YYYY-MM-DD
+
+echo "Hello from a POSIX shell script!"
