@@ -57,18 +57,58 @@ menu_modelos () {
 # t=($(ls modelos/))
 # echo ${t[0]} ${t[3]}  
 modelos=($(ls modelos/))
-Count=0
+count=0
 
 for nome in "${modelos[@]}"; do
-    echo "[$Count] $nome"
-    ((Count++))
+    echo "[$count] $nome"
+    ((count++))
 done
 
-read -p "Modelo (tecle <q> para sair):" opcao
+read -p "Modelo (tecle <q> para sair): " opcao
 
-if [[ $opcao == "q" ]]; then echo "saindo ..."; exit 0; fi
+# Verifica se o usuário quer sair
+if [[ "$opcao" == "q" ]]; then
+    echo "Saindo..."
+    exit 0
+fi
 
-echo "${modelos[$opcao]}"
+# Verifica se é um número inteiro
+if ! [[ "$opcao" =~ ^[0-9]+$ ]]; then
+    echo "Erro: opção inválida."
+    exit 0
+fi
+
+# Verifica se está dentro do intervalo
+if (( opcao < 0 || opcao >= count )); then
+    echo "Erro: número fora do intervalo válido (0 a $((count - 1)))."
+    exit 0
+fi
+
+# prompt para a digitação (obrigatória) do nome do arquivo:
+# echo "${modelos[$opcao]}"
+while true; do
+    read -p "Nome do arquivo: " arquivo
+    if [[ -z "$arquivo" ]]; then
+        echo -e "\nO nome do arquivo é obrigatório!"
+        read -p "Tecle <enter> para tentar novamente ou <c> para cancelar: " escolha
+        if [[ "$escolha" == "c" ]]; then
+            echo "Operação cancelada."
+            exit 0
+        fi
+        continue
+    fi
+    break
+done
+
+# Verifica se arquivo já existe
+if [[ -f $arquivo ]]; then
+    echo "Arquivo já existe."
+    exit $ERR_F_EXISTS
+fi
+# Cria arquivo a partir do modelo escolhido
+cp "$tpl_dir/$modelo_escolhido" "$arquivo"
+exec nano "$arquivo"
+exit 0
 
 }
 
